@@ -87,7 +87,7 @@ services:
         "--bind",
         "redis3",
         "--maxmemory 2mb",
-        "--maxmemory-policy allkeys-random"
+        "--maxmemory-policy allkeys-lfu"
       ]
     
 
