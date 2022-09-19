@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package search;
+
+service Search{
+ rpc GetServerResponse(Message) returns (SearchResults) {}
+}
+
+message Message{
+ string message = 1;
+}
+
+message SearchResults{
+  repeated Query query = 1;
+}
+
+message Query{
+ string url = 1;
+ string title = 2;
+ string description = 3;
+ string keywords = 4;
+}
