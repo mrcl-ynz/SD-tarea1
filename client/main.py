@@ -3,27 +3,23 @@ from flask import Flask, request, render_template
 
 import grpc
 import redis
-import logging
 
 import proto_message_pb2 as pb2_grpc
 import proto_message_pb2_grpc as pb2
-import json, time
+import time
 
 app = Flask(__name__)
 
 r = redis.Redis(host="redis1", port=6379, db=0)
-#r.config_set('maxmemory', 865200*2)
-r.config_set('maxmemory-policy', 'allkeys-lru')
+r.config_set('maxmemory-policy', 'allkeys-lfu')
 r.flushall()
 
 r1 = redis.Redis(host="redis2", port=6379, db=0)
-#r1.config_set('maxmemory', 865200*2)
 r1.config_set('maxmemory-policy', 'allkeys-lfu')
 r1.flushall()
 
 r2 = redis.Redis(host="redis3", port=6379, db=0)
-#r2.config_set('maxmemory', 865200*2)
-r2.config_set('maxmemory-policy', 'allkeys-random')
+r2.config_set('maxmemory-policy', 'allkeys-lfu')
 r2.flushall()
 
 

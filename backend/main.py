@@ -44,24 +44,3 @@ if __name__ == '__main__':
     conn = querys.init_db()
     cursor = conn.cursor()
     serve()
-
-''' def get_his_count():
-    retries = 6
-    while True:
-        try:
-            return cache.incr('hits')
-        except redis.exceptions.ConnectionError as exc:
-            if retries == 0:
-                raise exc
-            retries -= 1
-            time.sleep(0.5)
-'''
-
-''' @app.route('/')
-def hello():
-    count = get_his_count()
-    return ('Hello World! I have been seen {} times.\n'.format(count))
-
-@app.route('/about')
-def about():
-    return '<h1>About</h1>' '''
